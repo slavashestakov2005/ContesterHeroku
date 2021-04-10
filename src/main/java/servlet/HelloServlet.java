@@ -3,6 +3,7 @@ package servlet;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -21,5 +22,11 @@ public class HelloServlet extends HttpServlet {
         out.write(new File("").getAbsoluteFile().toString().getBytes());
         out.flush();
         out.close();
+
+        String path = Paths.get("").toAbsolutePath().toString() + "/src/main/webapp/file.html";
+        FileWriter writer = new FileWriter(new File(path));
+        writer.write("<!DOCTYPE HTML><html><head>Страничка</head><body>Текстик</body></html>");
+        writer.flush();
+        writer.close();
     }
 }
