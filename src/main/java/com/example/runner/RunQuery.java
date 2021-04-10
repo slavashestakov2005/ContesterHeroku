@@ -94,8 +94,9 @@ public class RunQuery {
     }
 
     private boolean compileFile() throws IOException, InterruptedException {
+        return true;/*
         Process process = Runtime.getRuntime().exec(Languages.getCompileCommand(lang, fileName, hash));
-        return process.waitFor(compileLimit, TimeUnit.MILLISECONDS);
+        return process.waitFor(compileLimit, TimeUnit.MILLISECONDS);*/
     }
 
     protected void runProgram() {
@@ -122,7 +123,7 @@ public class RunQuery {
 
     protected boolean executeFile(String command, Test test, int testCount) throws IOException, InterruptedException {
         Process process = Runtime.getRuntime().exec(command);
-        long pid = process.pid();
+        long pid = 0;//process.pid();
         System.out.println("PID : " + pid);
         RunTask runTask = new RunTask(process, testCount);
         runTask.start();
@@ -140,7 +141,7 @@ public class RunQuery {
         }
         br.close();
 
-        boolean res = process.waitFor(task.getTimeLimit() + lang.getFreeTime(), TimeUnit.MILLISECONDS);
+        boolean res = true;//process.waitFor(task.getTimeLimit() + lang.getFreeTime(), TimeUnit.MILLISECONDS);
         runTask.join();
         result.text = lines.toArray(new String[0]);
         if (result.status == Status.OK) {
@@ -219,19 +220,19 @@ public class RunQuery {
         public RunTask(Process process, int testCount) {
             this.process = process;
             this.testCount = testCount;
-            this.pid = process.pid();
+            this.pid = 0;//process.pid();
         }
 
         public void run() {
-            while (!process.isAlive()) try {
+            /*while (!process.isAlive()) try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
             result.startTime = System.currentTimeMillis();
             System.out.println("#pid | start " + pid + " | " + result.startTime);
             TaskListParser.addNew();
-            while (process.isAlive()) try {
+            while (true/*process.isAlive()*/) try {
                 result.memory = Math.max(result.memory, TaskListParser.getMemory(pid));
                 result.endTime = System.currentTimeMillis();
                 System.out.println("#pid | end " + pid + " | " + result.endTime);

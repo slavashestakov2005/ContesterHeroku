@@ -41,7 +41,7 @@ public class SendingsTable {
             if (resultSet != null) {
                 while (resultSet.next()) {
                     Sending sending = Sending.parseSQL(resultSet);
-                    if (!result.containsKey(sending.getUser())) result.put(sending.getUser(), new HashMap<>());
+                    if (!result.containsKey(sending.getUser())) result.put(sending.getUser(), new HashMap<Integer, Integer>());
                     if (!result.get(sending.getUser()).containsKey(sending.getTask())) result.get(sending.getUser()).put(sending.getTask(), 0);
                     int now = result.get(sending.getUser()).get(sending.getTask());
                     if (now <= 0) {

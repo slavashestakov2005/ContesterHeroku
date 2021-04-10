@@ -1,17 +1,15 @@
 package com.example.runner;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Checker {
     public static String read(String fileName){
         try {
-            FileInputStream in = new FileInputStream(fileName);
-            String line = new String(in.readAllBytes());
-            in.close();
-            return line;
+            return new String(Files.readAllBytes(Paths.get(fileName)));
         } catch (IOException e) {
             e.printStackTrace();
         }
