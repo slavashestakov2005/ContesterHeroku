@@ -1,0 +1,104 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    height: 80px;
+    background: #FEDFC0;
+    border-bottom: 2px solid #7B5427;
+    font-size: 16pt;
+    text-align: center;
+}
+
+#header h1 {
+    padding: 20px;
+    margin: 0;
+}
+
+#nav1 {
+    float: left;
+    width: 4%;
+}
+
+#nav2 {
+    float: right;
+    margin-right: 1%;
+    font-size: 12pt;
+}
+
+#nav3 {
+    margin-left: 150px;
+    margin-right: 11%;
+}
+
+#image{
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+}
+
+#page {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+#sidebar, #content {
+    position: absolute;
+    overflow: auto;
+    padding: 10px;
+}
+
+#sidebar {
+    width: 150px;
+    background: #ECF5E4;
+    border-right: 1px solid #231F20;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+#content {
+    left: 170px;
+    right: 0;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+#code {
+    text-align: center;
+    width: 95%;
+}
+
+#code_text {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 5px 0;
+    padding: 10px;
+    border: solid 2px #e06969;
+    background-color: #fff;
+    min-height: 54px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0 auto;
+    resize: none;
+}
+
+#down {
+    height: 120px;
+    width: 100%;
+}
+
+#down2 {
+    height: 120px;
+    width: 100%;
+}
+
+#password {
+    width: 15%;
+}

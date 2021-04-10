@@ -1,0 +1,56 @@
+.input_output{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 5px 0;
+    padding: 10px;
+    border: solid 2px #e06969;
+    background-color: #fff;
+    min-height: 54px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0 auto;
+    resize: none;
+}
+
+.tasks_data_small{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    min-height: 50px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0 auto;
+    resize: none;
+}
+
+.tasks_data_middle{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    min-height: 100px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0 auto;
+    resize: none;
+}
+
+.tasks_data_large{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    min-height: 300px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0 auto;
+    resize: none;
+}

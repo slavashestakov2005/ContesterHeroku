@@ -1,0 +1,42 @@
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="../Images/image.ico" type="image/x-icon">
+		<link rel="stylesheet" href="../CSS/users.css">
+		<link rel="stylesheet" href="../CSS/admin.css">
+		<script src="../JS/users.js" type="text/javascript"> </script>
+		<script src="../JS/admin.js" type="text/javascript"> </script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script> var lang_c = -1; </script>
+		<title>Работиа в системе</title>
+	</head>
+	<body>
+		<div id="header">
+			<div id="nav1"><center><button id="image" onclick="CreateContest(document)"><img src="../Images/add.png"></button></center></div>
+			<div id="nav2">
+				<p align="right">
+					<script>printNameSurname(document);</script>
+					<br/>
+					<a href="edit.html">Редактировать</a>
+					<a href="../index.html">Выйти</a>
+				</p>
+			</div>
+			<div id="nav3"><center><h1><a href="main.html">Контестер</a></h1></center></div>
+		</div>
+		<div id="page">
+			<iframe src="sidebar.html" width="150px" height="100%" scrolling="no" frameborder="no" style="position: absolute; ">Разделы</iframe>
+			<div id="content">
+				<center><h2>Работа в системе</h2></center>
+				<p>Чтобы начать решать задаси Вы переходите в раздел "Контесты". Далее выбираете нужного автора задач.
+				Открывается список контестов этого автора. Из них Вы выбираете нужный Вам контест и решаете его.</p>
+				<p>Каждая задач имеет ограния по времени и памяти, а также условие самой задачи. Когда Вы решили задачу, то можете её отправить.</p>
+				<p>Вердикты</p>
+				...(тут будет таблица)...
+				<p>Поддерживаемые языки:</p>
+				...(это генерируется автоматически)...
+				<div id="down2"></div>
+			</div>
+		</div>
+	</body>
+</html>

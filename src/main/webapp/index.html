@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Контестер</title>
+		<script>
+			document.cookie = "name=; expires=0; path=/";
+			document.cookie = "surname=; expires=0; path=/";
+			function f(){
+				var name = document.getElementById("name").value;
+				var surname = document.getElementById("surname").value;
+				document.cookie = "name=" + name + "; path=/";
+				document.cookie = "surname=" + surname + "; path=/";
+				document.location.replace("Info/main.html");
+			}
+		</script>
+    </head>
+    <body>
+        <center>
+            <h2>Введите данные, чтобы войти на сайт</h2>
+			Имя: <input type="text" id="name">
+			<br/>
+			Фамилия: <input type="text" id="surname" />
+			<input type="submit" value="Войти" onclick="f();" />
+        </center>
+    </body>
+</html>
