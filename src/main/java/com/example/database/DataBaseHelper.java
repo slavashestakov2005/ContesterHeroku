@@ -9,7 +9,7 @@ public class DataBaseHelper {
 
     static {
         try {
-            Class.forName("com.example.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             String dbUrl = System.getenv("JDBC_DATABASE_URL");
             connection = DriverManager.getConnection(dbUrl);
 
