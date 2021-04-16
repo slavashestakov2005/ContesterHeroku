@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import com.example.database.DataBaseHelper;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.WebResourceSet;
 import org.apache.catalina.core.StandardContext;
@@ -12,8 +13,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.EmptyResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
-import org.apache.tomcat.util.scan.Constants;
-import org.apache.tomcat.util.scan.StandardJarScanFilter;
+import org.graalvm.compiler.code.DataSection;
 
 public class Main {
 
@@ -34,7 +34,20 @@ public class Main {
         }
     }
 
+    private static void createDataBase(){
+        DataBaseHelper.execute("CREATE TABLE \"constants\" (\n" +
+                "\t\"name\"\tTEXT NOT NULL UNIQUE,\n" +
+                "\t\"value\"\tTEXT NOT NULL,\n" +
+                "\tPRIMARY KEY(\"name\")\n" +
+                ");");
+        DataBaseHelper.execute("INSERT INTO constants VALUES ('admin_name', 'admin_name');");
+        DataBaseHelper.execute("INSERT INTO constants VALUES ('admin_surname', 'admin_surname');");
+        DataBaseHelper.execute("INSERT INTO constants VALUES ('compile_time', '10000');");
+    }
+
     public static void main(String[] args) throws Exception {
+
+        createDataBase();
 
         File root = getRootFolder();
         System.setProperty("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE", "true");
