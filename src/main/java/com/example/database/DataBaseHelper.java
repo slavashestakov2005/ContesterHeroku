@@ -1,7 +1,5 @@
 package com.example.database;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.Stack;
 
@@ -11,20 +9,16 @@ public class DataBaseHelper {
 
     static {
         try {
-
-            URI dbUri = new URI(System.getenv("postgres://ffdvkpmpwhbejq:1c96f772280b265bd04530561ecab2f93eb6a4648f505103de76bf6f6f238386@ec2-176-34-222-188.eu-west-1.compute.amazonaws.com:5432/d6uk1rn2anpli3"));
-
-            String username = dbUri.getUserInfo().split(":")[0];
-            String password = dbUri.getUserInfo().split(":")[1];
-            String connectionString = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-
+            String dbUrl = System.getenv("JDBC_DATABASE_URL");
+            String username = System.getenv("JDBC_DATABASE_USERNAME");
+            String password = System.getenv("JDBC_DATABASE_PASSWORD");
 
             connection = null;
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection(connectionString, username, password);
+            connection = DriverManager.getConnection(dbUrl, username, password);
             statements = new Stack<>();
             statements.push(connection.createStatement());
-        } catch (SQLException | ClassNotFoundException | URISyntaxException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
