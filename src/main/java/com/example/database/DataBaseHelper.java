@@ -9,12 +9,13 @@ public class DataBaseHelper {
 
     static {
         try {
+            Class.forName("com.example.jdbc.Driver");
             String dbUrl = System.getenv("JDBC_DATABASE_URL");
             connection = DriverManager.getConnection(dbUrl);
 
             statements = new Stack<>();
             statements.push(connection.createStatement());
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
