@@ -34,6 +34,7 @@ public class Main {
     }
 
     private static void createDataBase(){
+        DataBaseHelper.execute("DROP TABLE IF EXISTS constants, contests, contests_langs, contests_tasks, langs, sendings, tasks, tests");
         loadConstants();
         loadContests();
         loadContestsLangs();
@@ -60,8 +61,8 @@ public class Main {
                 "\t\"id\"\tserial primary key,\n" +
                 "\t\"name\"\tTEXT NOT NULL,\n" +
                 "\t\"description\"\tTEXT,\n" +
-                "\t\"start\"\tINTEGER NOT NULL,\n" +
-                "\t\"finish\"\tINTEGER NOT NULL,\n" +
+                "\t\"start\"\tBIGINT NOT NULL,\n" +
+                "\t\"finish\"\tBIGINT NOT NULL,\n" +
                 "\t\"password\"\tTEXT NOT NULL\n" +
                 ");");
         DataBaseHelper.execute("INSERT INTO contests VALUES ('1', 'Пример', 'Здесь располагается описание контеста.', '1615345200000', '1622430000000', '');");
@@ -99,7 +100,7 @@ public class Main {
                 "\t\"name\"\tTEXT NOT NULL,\n" +
                 "\t\"end1\"\tTEXT NOT NULL UNIQUE,\n" +
                 "\t\"end2\"\tTEXT NOT NULL,\n" +
-                "\t\"compile\"\tNUMERIC NOT NULL,\n" +
+                "\t\"compile\"\tTEST NOT NULL,\n" +
                 "\t\"execute\"\tTEXT NOT NULL,\n" +
                 "\t\"freeTime\"\tINTEGER NOT NULL,\n" +
                 "\t\"freeMemory\"\tINTEGER NOT NULL,\n" +
@@ -117,7 +118,7 @@ public class Main {
                 "\t\"status\"\tINTEGER NOT NULL,\n" +
                 "\t\"code\"\tTEXT,\n" +
                 "\t\"lang_id\"\tINTEGER NOT NULL,\n" +
-                "\t\"time\"\tINTEGER NOT NULL,\n" +
+                "\t\"time\"\tBIGINT NOT NULL,\n" +
                 "\t\"bad_test\"\tINTEGER NOT NULL\n" +
                 ");");
     }
