@@ -57,13 +57,12 @@ public class Main {
 
     private static void loadContests(){
         DataBaseHelper.execute("CREATE TABLE IF NOT EXISTS \"contests\" (\n" +
-                "\t\"id\"\tINTEGER NOT NULL UNIQUE,\n" +
+                "\t\"id\"\tserial primary key,\n" +
                 "\t\"name\"\tTEXT NOT NULL,\n" +
                 "\t\"description\"\tTEXT,\n" +
                 "\t\"start\"\tINTEGER NOT NULL,\n" +
                 "\t\"finish\"\tINTEGER NOT NULL,\n" +
-                "\t\"password\"\tTEXT NOT NULL,\n" +
-                "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+                "\t\"password\"\tTEXT NOT NULL\n" +
                 ");");
         DataBaseHelper.execute("INSERT INTO contests VALUES ('1', 'Пример', 'Здесь располагается описание контеста.', '1615345200000', '1622430000000', '');");
         DataBaseHelper.execute("INSERT INTO contests VALUES ('2', 'Отборочный тур Сириуса', 'Отборочный тур на программу \"Алгоритмы и анализ данныз\" (декабрь 2020).\n" +
@@ -74,9 +73,8 @@ public class Main {
 
     private static void loadContestsLangs(){
         DataBaseHelper.execute("CREATE TABLE IF NOT EXISTS \"contests_langs\" (\n" +
-                "\t\"id_contest\"\tINTEGER NOT NULL,\n" +
-                "\t\"id_lang\"\tINTEGER NOT NULL,\n" +
-                "\tPRIMARY KEY(\"id_contest\",\"id_lang\")\n" +
+                "\t\"id_contest\"\tINTEGER NOT NULL primary key,\n" +
+                "\t\"id_lang\"\tINTEGER NOT NULL primary key\n" +
                 ");");
         DataBaseHelper.execute("INSERT INTO contests_langs VALUES ('1', '1');");
         DataBaseHelper.execute("INSERT INTO contests_langs VALUES ('1', '2');");
@@ -84,9 +82,8 @@ public class Main {
 
     private static void loadContestsTasks(){
         DataBaseHelper.execute("CREATE TABLE IF NOT EXISTS \"contests_tasks\" (\n" +
-                "\t\"id_contest\"\tINTEGER NOT NULL,\n" +
-                "\t\"id_task\"\tINTEGER NOT NULL,\n" +
-                "\tPRIMARY KEY(\"id_contest\",\"id_task\")\n" +
+                "\t\"id_contest\"\tINTEGER NOT NULL primary key,\n" +
+                "\t\"id_task\"\tINTEGER NOT NULL primary key\n" +
                 ");");
         DataBaseHelper.execute("INSERT INTO contests_tasks VALUES ('1', '1');");
         DataBaseHelper.execute("INSERT INTO contests_tasks VALUES ('1', '2');");
@@ -98,7 +95,7 @@ public class Main {
 
     private static void loadLangs(){
         DataBaseHelper.execute("CREATE TABLE IF NOT EXISTS \"langs\" (\n" +
-                "\t\"id\"\tINTEGER NOT NULL UNIQUE,\n" +
+                "\t\"id\"\tserial primary key,\n" +
                 "\t\"name\"\tTEXT NOT NULL,\n" +
                 "\t\"end1\"\tTEXT NOT NULL UNIQUE,\n" +
                 "\t\"end2\"\tTEXT NOT NULL,\n" +
@@ -107,8 +104,7 @@ public class Main {
                 "\t\"freeTime\"\tINTEGER NOT NULL,\n" +
                 "\t\"freeMemory\"\tINTEGER NOT NULL,\n" +
                 "\t\"minTime\"\tINTEGER NOT NULL,\n" +
-                "\t\"minMemory\"\tINTEGER NOT NULL,\n" +
-                "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+                "\t\"minMemory\"\tINTEGER NOT NULL\n" +
                 ");");
         DataBaseHelper.execute("INSERT INTO langs VALUES ('1', 'C++', 'cpp', 'exe', 'g++ -static -fno-strict-aliasing -DACMP -lm -s -x c++ -std=c++17 -Wl,--stack=67108864 -O2 -o {1} {0}', '{0}', '290', '3600', '30', '400');");
         DataBaseHelper.execute("INSERT INTO langs VALUES ('2', 'Python', 'py', 'pyc', 'python -c \"import py_compile; py_compile.compile(r\\\"{0}\\\", r\\\"{1}\\\");\"', 'python {0}', '290', '7000', '45', '740');");
@@ -128,15 +124,14 @@ public class Main {
 
     private static void loadTasks(){
         DataBaseHelper.execute("CREATE TABLE IF NOT EXISTS \"tasks\" (\n" +
-                "\t\"id\"\tINTEGER NOT NULL UNIQUE,\n" +
+                "\t\"id\"\tserial primary key,\n" +
                 "\t\"name\"\tTEXT NOT NULL,\n" +
                 "\t\"description\"\tTEXT,\n" +
                 "\t\"input\"\tTEXT,\n" +
                 "\t\"output\"\tTEXT,\n" +
                 "\t\"solution\"\tTEXT,\n" +
                 "\t\"timeLimit\"\tINTEGER NOT NULL,\n" +
-                "\t\"memoryLimit\"\tINTEGER NOT NULL,\n" +
-                "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+                "\t\"memoryLimit\"\tINTEGER NOT NULL\n" +
                 ");");
         DataBaseHelper.execute("INSERT INTO tasks VALUES ('1', 'A+B', 'Вводятся числа A и B. Выведите их сумму.', 'Два целых числа, таких что \\( |A| \\leq 10^9 \\) и \\( |B| \\leq 10^9 \\).', 'Выведите одно число, сумму входных чисел.', 'Решние задачи A+B на Python:\n" +
                 "<font color=\"#FF6699\">print</font>(<font color=\"#FF6699\">sum</font>(<font color=\"#FF6699\">map</font>(<font color=\"#FF6699\">int</font>, <font color=\"#FF6699\">input</font>.split())))\n" +
@@ -183,13 +178,12 @@ public class Main {
 
     private static void loadTests(){
         DataBaseHelper.execute("CREATE TABLE IF NOT EXISTS \"tests\" (\n" +
-                "\t\"id\"\tINTEGER NOT NULL UNIQUE,\n" +
+                "\t\"id\"\tserial primary key,\n" +
                 "\t\"id_task\"\tINTEGER NOT NULL,\n" +
                 "\t\"input\"\tTEXT,\n" +
                 "\t\"output\"\tTEXT,\n" +
                 "\t\"example\"\tINTEGER NOT NULL,\n" +
-                "\t\"public\"\tINTEGER NOT NULL,\n" +
-                "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+                "\t\"public\"\tINTEGER NOT NULL\n" +
                 ");");
         DataBaseHelper.execute("INSERT INTO tests VALUES ('1', '1', '2 3', '5', '1', '0');");
         DataBaseHelper.execute("INSERT INTO tests VALUES ('2', '1', '0 5', '5', '1', '0');");
