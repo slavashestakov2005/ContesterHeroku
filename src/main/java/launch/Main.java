@@ -35,14 +35,14 @@ public class Main {
 
     private static void createDataBase(){
         DataBaseHelper.execute("DROP TABLE IF EXISTS constants, contests, contests_langs, contests_tasks, langs, sendings, tasks, tests");
-        loadConstants();
+        /*loadConstants();
         loadContests();
         loadContestsLangs();
         loadContestsTasks();
         loadLangs();
         loadSendings();
         loadTasks();
-        loadTests();
+        loadTests();*/
     }
 
     private static void loadConstants(){
