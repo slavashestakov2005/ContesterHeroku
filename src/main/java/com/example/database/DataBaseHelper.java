@@ -10,15 +10,11 @@ public class DataBaseHelper {
     static {
         try {
             String dbUrl = System.getenv("JDBC_DATABASE_URL");
-            String username = System.getenv("JDBC_DATABASE_USERNAME");
-            String password = System.getenv("JDBC_DATABASE_PASSWORD");
+            connection = DriverManager.getConnection(dbUrl);
 
-            connection = null;
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection(dbUrl, username, password);
             statements = new Stack<>();
             statements.push(connection.createStatement());
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
